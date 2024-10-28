@@ -12,6 +12,9 @@
             text-decoration: none;
 
         }
+        .nav-item {
+            position: relative; /* Necesario para el efecto de subrayado */
+        }
         .nav-item::after{
             content: "";
             position: absolute;
@@ -28,7 +31,7 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
-        .navbar bg-body-tertiary{
+        .bg-body-tertiary{
             background-color: #C5904C;
         }
     </style>
@@ -40,7 +43,7 @@
                 <img src="assets/img/LOGO_AI_VECTORIZADO.png" alt="Brew_Bite" width="150" height="100"  style="margin-left: -50px;">
             </a>
 
-            <ul class="nav justify-content-ed">
+            <ul class="nav justify-content-end">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                 </li>
