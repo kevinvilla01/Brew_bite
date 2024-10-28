@@ -6,6 +6,24 @@
     <link rel="stylesheet" href="assets/bootstrap.min.css">
     <script src="assets/bootstrap.bundle.min.js"></script>
     <title>Brew & Bite</title>
+    <style>
+        .nav-link{
+            color: #F5EEDC;
+            text-decoration: none;
+
+        }
+        .nav-link::after{
+            content: "";
+            background-color: #F5EEDC;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        .nav-link:hover::after{
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar bg-body-tertiary">
