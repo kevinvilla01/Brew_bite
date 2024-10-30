@@ -74,7 +74,7 @@
         
         /*seccion de intermedio*/
         .seccioni1{
-            margin-top: 60px;
+            margin-top: 70px;
             background-color: #F5EEDC;
         }
 
@@ -86,13 +86,31 @@
         }
         .carta{
             padding: 20px;
+            
         }
         .row2{
-            margin-left: 43px;
+            margin-left: 65px;
         }
         .card-img-top{
             height: 200px; 
             object-fit: cover;
+        }
+        .card{
+            overflow: hidden;
+        }
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: #b68f51;
+            clip-path: var(--clip-path-1);
+            transform: scaleY(0.4);
+            transform-origin: bottom;
+            transition: var(--transition-1);
+        }
+        .card:hover:hover::after {
+            clip-path: var(--clip-path-2);
+            transform: scaleY(1);
         }
         
         
@@ -168,7 +186,7 @@
         <div class="row row2">
 
           <div class="col carta">
-            <div class="card" style="width: 18rem;">
+            <div class="card cartas" style="width: 18rem;">
                 <img src="assets/img/cafe icon.png" class="iconos">
                 <h4>Café</h4>
                 <div class="card-body">
