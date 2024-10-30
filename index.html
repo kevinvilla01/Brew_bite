@@ -98,22 +98,22 @@
         }
 
         .card {
-            position: relative; /* Asegúrate de que el pseudo-elemento se posicione correctamente */
+            position: relative;
             background-color: #F5EEDC; /* Color de fondo inicial */
+            text-align: center;
+            padding: 20px; /* Ajusta el padding según sea necesario */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+            z-index: 1;
+            overflow: hidden; /* Para que el contenido no sobresalga */
             transition: background-color 0.5s ease; /* Transición suave para el fondo */
-            overflow: hidden; /* Asegúrate de que el contenido no sobresalga */
-        }
-
-        .card:hover {
-            background-color: #b68f51; /* Color de fondo al hacer hover */
         }
 
         .card::after {
             content: "";
             position: absolute;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.1); /* Color de sombra opcional */
-            clip-path: var(--clip-path-1);
+            background-color: #b68f51; /* Color de fondo al hacer hover */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Cambia según tus necesidades */
             transform: scaleY(0.4);
             transform-origin: bottom;
             z-index: -1;
@@ -121,8 +121,17 @@
         }
 
         .card:hover::after {
-            clip-path: var(--clip-path-2);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Mantener el mismo clip-path */
             transform: scaleY(1);
+        }
+
+        .card h4, .card .card-body {
+            color: #fcfcfc; /* Color del texto */
+            transition: color 0.5s ease; /* Transición para el color del texto */
+        }
+
+        .card:hover h4, .card:hover .card-body {
+            color: #F5EEDC; /* Color del texto al hacer hover */
         }
     </style>
     <!-- Fin de estilos de la página -->
