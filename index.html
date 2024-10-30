@@ -96,6 +96,34 @@
             height: 200px;
             object-fit: cover;
         }
+
+        .card {
+            position: relative; /* Asegúrate de que el pseudo-elemento se posicione correctamente */
+            background-color: #F5EEDC; /* Color de fondo inicial */
+            transition: background-color 0.5s ease; /* Transición suave para el fondo */
+            overflow: hidden; /* Asegúrate de que el contenido no sobresalga */
+        }
+
+        .card:hover {
+            background-color: #b68f51; /* Color de fondo al hacer hover */
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.1); /* Color de sombra opcional */
+            clip-path: var(--clip-path-1);
+            transform: scaleY(0.4);
+            transform-origin: bottom;
+            z-index: -1;
+            transition: transform 0.5s ease; /* Transición para el efecto de fondo */
+        }
+
+        .card:hover::after {
+            clip-path: var(--clip-path-2);
+            transform: scaleY(1);
+        }
     </style>
     <!-- Fin de estilos de la página -->
 </head>
