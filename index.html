@@ -126,6 +126,28 @@
             clip-path: var(--clip-path-2);
             transform: scaleY(1);
         }
+
+        /*Nosotros*/
+
+        .nosotros{
+            background-color: #fcfcfc;
+        }
+        .coreana{
+            background-color: #b68f51;
+            margin-left: 20%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .cor{
+            object-fit: cover;
+            height: auto;
+            width: 100%;
+        }
+
+        /*Menu code*/
+        .menu{
+            background-color: #F5EEDC;
+        }
         
         
     </style>
@@ -235,6 +257,33 @@
         </div>
         </div>
     </div>
+
+    <!--Nosotros-->
+    <div class="container-fluid text-center nosotros">
+        <div class="row">
+          <!--Imagen de la coreana-->
+          <div class="col">
+            <div class="card coreana" style="width: 18rem;">
+              <img src="assets/img/Mesera.png" class="cor">
+            </div>  
+          </div>
+    
+          <!--Informacion-->
+          <div class="col">
+            <h1 class="display-4">Pasteles, bocadillos y los mejores cafes de la zona!</h1>
+            <p class="lead">En Brew and Bite, no solo servimos café excepcional y comidas deliciosas, sino que también nos esforzamos por ser un espacio donde la comunidad pueda reunirse, compartir ideas y disfrutar de momentos especiales juntos.</p>
+            <ul>
+              <li>Ambiente acogedor</li>
+              <li>Servicio al cliente excepcional</li>
+              <li>Wifi gratuito</li>
+            </ul>
+            <button class="btn btn-primary">Ordenar</button>
+          </div>
+        </div>
+      </div>
+      <!--Fin de nosotros-->
+
+    <!--Seccion de Menu-->
 
     <div class="container text-center py-4 menu">
         <h3>Nuestro delicioso menú</h3>
