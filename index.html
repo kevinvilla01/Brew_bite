@@ -143,8 +143,7 @@
         .coreana{
             background-color: #b68f51;
             margin-left: 20%;
-            margin-top: 50px;
-            margin-bottom: 50px;
+            margin: 50px auto;
         }
         .cor{
             object-fit: cover;
@@ -156,18 +155,68 @@
         .menu{
             background-color: #F5EEDC;
         }
-
-        .btnMenu{
-            background-color: #b68f51;
+        .btnMenu {
+            background-color: #b68f51; /* Color de fondo del botón */
             width: 100%;
-            cursor: pointer;
-            width: 100%;
-            transition: background-image 0.5s ease, width 0.5s ease;
-        }
-        .btnMenu:hover{
-            background-image: linear-gradient(to right, #a99985 0%, #dad2bc 100%);
+            overflow: hidden; /* Asegúrate de que esto no esté causando problemas */
+            position: relative;
+            z-index: 1; /* Mantén el z-index del botón por encima del pseudo-elemento */
+            border: none; /* Asegúrate de que no haya bordes que afecten la apariencia */
+            color: white; /* Cambia el color del texto si es necesario */
+            padding: 10px; /* Ajusta el padding según sea necesario */
         }
 
+        .btnMenu::before {
+            content: '';
+            width: 0;
+            height: 100%; /* Asegúrate de que el pseudo-elemento cubra todo el botón */
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(to right, #8a6b3a 0%, #654400 100%);
+            transition: width 0.5s ease; /* Especifica la propiedad que deseas animar */
+            display: block;
+            z-index: -1; /* Este z-index debe ser menor que el del botón */
+        }
+
+        .btnMenu:hover::before {
+            width: 100%;
+        }
+
+        /* Evitar que el botón cambie su apariencia al hacer hover */
+        .btnMenu:hover {
+            background-color: #b68f51; /* Manten el mismo color de fondo */
+            color: white;
+        }
+        .col_menu{
+            margin-left: 2px;
+        }
+
+        .cardmenu{
+            position: relative;
+            background-color: #b68f51; /* Color de fondo inicial */
+            text-align: center;
+            padding: 20px; /* Ajusta el padding según sea necesario */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+            z-index: 1;
+            overflow: hidden; /* Para que el contenido no sobresalga */
+            transition: background-color 0.5s ease; /* Transición suave para el fondo */
+        }
+        .cardmenu::after{
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: #8a6b3a; /* Color de fondo al hacer hover */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Cambia según tus necesidades */
+            transform: scaleY(0.4);
+            transform-origin: bottom;
+            z-index: -1;
+            transition: transform 0.5s ease; /* Transición para el efecto de fondo */
+        }
+        .cardmenu:hover::after{
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Mantener el mismo clip-path */
+            transform: scaleY(1);
+        }
 
     </style>
     <!-- Fin de estilos de la página -->
@@ -311,7 +360,7 @@
 
     <!--Seccion de Menu-->
 
-    <div class="container text-center py-4 menu">
+    <div class="container-fluid text-center py-4 menu px-5">
         <h3>Nuestro delicioso menú</h3>
         <div class="row">
             <div class="col">
@@ -327,64 +376,64 @@
                 <button type="button" class="btn btn-lg btn-block btnMenu">Bocadillos</button>
             </div>
 
-            <div class="row row-cols-md-3 g-4">
+            <div class="row row-cols-md-3 g-4 col_menu">
                 <!-- Primera fila de 3 cards -->
                 <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
+                    <div class="card cardmenu h-100">
+                        <img src="assets/img/Expresso.png" class="card-img-top rounded-circle" alt="Expresso" style="width: 40%; height: 10rem; margin: 0 125px;">
                         <div class="card-body">
                             <h5 class="card-title">Expresso</h5>
-                            <p class="card-text">expresso.</p>
+                            <p class="card-text">Precio: $45.00</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
+                    <div class="card cardmenu h-100">
+                        <img src="assets/img/Americano.png" class="card-img-top rounded-circle" alt="Americano" style="width: 40%; height: 10rem; margin-left: 125px;">
                         <div class="card-body">
                             <h5 class="card-title">Americano</h5>
-                            <p class="card-text">americano.</p>
+                            <p class="card-text">Precio: $35.00</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
+                    <div class="card cardmenu h-100">
+                        <img src="assets/img/Capuchino.png" class="card-img-top rounded-circle" alt="Capuchino" style="width: 40%; height: 10rem; margin-left: 125px;">
                         <div class="card-body">
                             <h5 class="card-title">Capuchino</h5>
-                            <p class="card-text">capuchino.</p>
+                            <p class="card-text">Precio: $45.00</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
+                    <div class="card cardmenu h-100">
+                        <img src="assets/img/frappe.png" class="card-img-top rounded-circle" alt="Frappé" style="width: 40%; height: 10rem; margin-left: 125px;">
                         <div class="card-body">
                             <h5 class="card-title">Frappé</h5>
-                            <p class="card-text">frappé.</p>
+                            <p class="card-text">Precio: $50.00</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
+                    <div class="card cardmenu h-100">
+                        <img src="assets/img/latte.png" class="card-img-top rounded-circle" alt="Latte" style="width: 40%; height: 10rem; margin-left: 125px;">
                         <div class="card-body">
                             <h5 class="card-title">Latte</h5>
-                            <p class="card-text">latte.</p>
+                            <p class="card-text">Precio: $70.00</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
+                    <div class="card cardmenu h-100">
+                        <img src="assets/img/mocca.png" class="card-img-top rounded-circle" alt="Mocca" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
                         <div class="card-body">
                             <h5 class="card-title">Mocca</h5>
-                            <p class="card-text">mocca.</p>
+                            <p class="card-text">Precio: $45.00</p>
                         </div>
                     </div>
                 </div>
