@@ -47,9 +47,8 @@
             color: #f5f5dc;
             width: 70%;
         }
-        .ordenar:hover{
-            color: #f5f5dc;
-            background-color: #76470a;
+        .btnOrdenar:hover{
+            display: none;
         }
         .textot{
             color: #fcfcfc;
@@ -161,6 +160,13 @@
         .btnMenu{
             background-color: #b68f51;
             width: 100%;
+            transition: background-color 0.5s ease;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .btnMenu:hover{
+            background-color: linear-gradient(to right, #b68f51 0%, #654400 100%);
+            z-index: -1; /* Asegúrate de que esté debajo del botón */
         }
 
     </style>
@@ -238,7 +244,7 @@
         <div class="col carta">
             <div class="card cartas" style="width: 18rem;">
                 <img src="assets/img/cafe icon.png" class="iconos">
-                <h4>Café</h4>
+                <h4 style="color: black;">Café</h4>
                 <div class="card-body">
                     <a><img src="assets/img/imgs1.png" class="card-img-top"></a>
                 </div>
@@ -249,7 +255,7 @@
             <div class="col carta">
                 <div class="card" style="width: 18rem;">
                     <img src="assets/img/cake icon.png" class="iconos">
-                    <h4>Pasteles</h4>
+                    <h4 style="color: black;">Pasteles</h4>
                     <div class="card-body">
                         <a><img src="assets/img/imgs2.png" class="card-img-top"></a>
                     </div>
@@ -261,7 +267,7 @@
             <div class="col carta">
                 <div class="card" style="width: 18rem;">
                     <img src="assets/img/pan icon.png" class="iconos">
-                    <h4>Bocadillos</h4>
+                    <h4 style="color: black;">Bocadillos</h4>
                     <div class="card-body">
                         <a><img src="assets/img/imgs3.png" class="card-img-top"></a>
                     </div>
@@ -290,7 +296,7 @@
                 <li>Servicio al cliente excepcional</li>
                 <li>Wifi gratuito</li>
                 </ul>
-                <button class="btn btn-primary">Ordenar</button>
+                <button type="button" class="btn btnOrdenar">Ordenar</button>
             </div>
         </div>
     </div>
