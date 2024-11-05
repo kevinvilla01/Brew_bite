@@ -87,10 +87,12 @@
         }
         .carta{
             padding: 20px;
-
         }
         .row2{
-            margin-left: 65px;
+            display: flex;
+            justify-content: center;
+            margin-left: 0;
+            margin-right: 0;
         }
         .card-img-top{
             height: 200px;
@@ -150,6 +152,11 @@
             height: auto;
             width: 100%;
         }
+        .infonosotros{
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        /*Fin de nosotros*/
 
         /*Menu code*/
         .menu{
@@ -158,6 +165,7 @@
         .btnMenu {
             background-color: #b68f51; /* Color de fondo del botón */
             width: 100%;
+            margin-top: 1rem;
             overflow: hidden; /* Asegúrate de que esto no esté causando problemas */
             position: relative;
             z-index: 1; /* Mantén el z-index del botón por encima del pseudo-elemento */
@@ -316,6 +324,7 @@
     <div class="container-fluid text-center seccioni1">
         <div class="row row2">
 
+        <div class="col-auto">
         <div class="col carta">
             <div class="card cartas" style="width: 18rem;">
                 <img src="assets/img/cafe icon.png" class="iconos">
@@ -325,8 +334,9 @@
                 </div>
             </div>
         </div>
+        </div>
 
-        <div class="col">
+        <div class="col-auto">
             <div class="col carta">
                 <div class="card" style="width: 18rem;">
                     <img src="assets/img/cake icon.png" class="iconos">
@@ -338,7 +348,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col-auto">
             <div class="col carta">
                 <div class="card" style="width: 18rem;">
                     <img src="assets/img/pan icon.png" class="iconos">
@@ -363,7 +373,7 @@
             </div>
 
             <!--Informacion-->
-            <div class="col">
+            <div class="col infonosotros">
                 <h1 class="display-4">Pasteles, bocadillos y los mejores cafes de la zona!</h1>
                 <p class="lead">En Brew and Bite, no solo servimos café excepcional y comidas deliciosas, sino que también nos esforzamos por ser un espacio donde la comunidad pueda reunirse, compartir ideas y disfrutar de momentos especiales juntos.</p>
                 <ul>
@@ -399,7 +409,7 @@
                 <!-- Primera fila de 3 cards -->
                 <div class="col">
                     <div class="card cardmenu h-100">
-                        <img src="assets/img/Expresso.png" class="card-img-top rounded-circle" alt="Expresso" style="width: 40%; height: 10rem; margin: 0 125px;">
+                        <img src="assets/img/Expresso.png" class="card-img-top rounded-circle" alt="Expresso" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
                         <div class="card-body">
                             <h5 class="card-title">Expresso</h5>
                             <p class="card-text">Precio: $45.00</p>
@@ -409,7 +419,7 @@
 
                 <div class="col">
                     <div class="card cardmenu h-100">
-                        <img src="assets/img/Americano.png" class="card-img-top rounded-circle" alt="Americano" style="width: 40%; height: 10rem; margin-left: 125px;">
+                        <img src="assets/img/Americano.png" class="card-img-top rounded-circle" alt="Americano" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
                         <div class="card-body">
                             <h5 class="card-title">Americano</h5>
                             <p class="card-text">Precio: $35.00</p>
@@ -419,7 +429,7 @@
 
                 <div class="col">
                     <div class="card cardmenu h-100">
-                        <img src="assets/img/Capuchino.png" class="card-img-top rounded-circle" alt="Capuchino" style="width: 40%; height: 10rem; margin-left: 125px;">
+                        <img src="assets/img/Capuchino.png" class="card-img-top rounded-circle" alt="Capuchino" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
                         <div class="card-body">
                             <h5 class="card-title">Capuchino</h5>
                             <p class="card-text">Precio: $45.00</p>
@@ -429,7 +439,7 @@
 
                 <div class="col">
                     <div class="card cardmenu h-100">
-                        <img src="assets/img/frappe.png" class="card-img-top rounded-circle" alt="Frappé" style="width: 40%; height: 10rem; margin-left: 125px;">
+                        <img src="assets/img/frappe.png" class="card-img-top rounded-circle" alt="Frappé" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
                         <div class="card-body">
                             <h5 class="card-title">Frappé</h5>
                             <p class="card-text">Precio: $50.00</p>
@@ -439,7 +449,7 @@
 
                 <div class="col">
                     <div class="card cardmenu h-100">
-                        <img src="assets/img/latte.png" class="card-img-top rounded-circle" alt="Latte" style="width: 40%; height: 10rem; margin-left: 125px;">
+                        <img src="assets/img/latte.png" class="card-img-top rounded-circle" alt="Latte" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
                         <div class="card-body">
                             <h5 class="card-title">Latte</h5>
                             <p class="card-text">Precio: $70.00</p>
