@@ -78,6 +78,30 @@
             margin-top: 10px;
             border: 10px solid #f5f5dc;
         }
+        /* Ajustes responsivos */
+        @media (max-width: 768px) {
+            .container, .principal {
+                margin: 0 auto; /* Reduce el margen en pantallas pequeñas */
+                padding: 0 1rem;
+            }
+            .textot, .texto {
+                width: 100%; /* Permite que el texto ocupe todo el ancho en pantallas pequeñas */
+            }
+            .textp {
+                margin-left: 0; /* Centra el texto en pantallas pequeñas */
+                margin-top: 1rem; /* Reduce el margen superior */
+                text-align: center; /* Centra el texto en pantallas pequeñas */
+            }
+            .imgp {
+                margin-top: 10px;
+                width: 100%;
+                border: 5px solid #f5f5dc; /* Ajusta el borde para que se vea mejor en pantallas pequeñas */
+            }
+            .cresponsive {
+                flex-direction: column; /* Hace que las columnas se apilen verticalmente en lugar de en fila */
+                align-items: center; /* Centra los elementos */
+            }
+        }
 
         /*seccion de intermedio*/
         .seccioni1{
@@ -233,115 +257,35 @@
         }
 
         /*Muestra*/
-        .card_int{
-            position: relative;
-            width: 350px;
-            height: 350px;
-            /* background: #333; */
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.5s;
+        .row3{
+            margin: 6rem 6rem;
         }
-        .card_int:hover{
-            width: 600px;
-            transition-delay: 0.5s;
+        .col_int{
+            margin-top: 4rem;
         }
-        .card_int .circle{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .card_int .circle::before{
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            border: 8px solid var(--clr);
-            background: #b68f51;
-            transition: 0.5s, background 0.5s;
-            transition-delay: 0.75s,1s;
-            filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 60px var(--clr));
-        }
-        .card_int:hover .circle::before{
-            width: 100%;
-            transition-delay: 0.5s;
-            height: 100%;
-            border-radius: 20px;
-            background: var(--clr);
-        }
-        .card_int .circle .logo{
-            position: relative;
-            width: 250px;
-            transition: 0.5s;
-            transition-delay: 0.5s;
-        }
-        .card_int:hover .circle .logo{
-            transform: scale(0);
-            transition-delay: 0s;
-        }
-        .card_int .product_img{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%) scale(0) rotate(315deg);
-            height: 300px;
-            transition: 0.5s ease-in-out;
-        }
-        .card_int:hover .product_img{
-            transition-delay: 0.75s;
-            transform: translate(-50%,-50%) scale(1) rotate(15deg);
-            top: 45%;
-            left: 75%;
-            height: 500px;
-        }
-        .card_int .content{
-            position:absolute;
-            width: 50%;
-            left: 20%;
-            padding: 20px 20px 20px 40px;
-            opacity: 0;
-            transition: 0.5s;
-            visibility: hidden;
-        }
-        .card_int:hover .content{
-            transition-delay: 0.75s;
-            opacity: 1;
-            visibility: visible;
-            left: 0;
-            margin: 10rem -4rem;
-        }
-        .card_int .content h2{
-            color: #fff;
-            text-transform: uppercase;
-            font-size: 2.4em;
-            line-height: 1em;
-        }
-        .card_int .content p{
-            color: #fff;
-        }
-        .card_int .content a{
-            position: relative;
-            color: #111;
-            background: #fff;
-            padding: 10px 20px;
-            border-radius: 10px;
-            display: inline-block;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-        .infocirculo{
-            margin: 8rem 33rem;
-        }
+        /* Ajustes responsivos */
+@media (max-width: 768px) {
+    .row3 {
+        margin: 1rem; /* Reduce el margen en pantallas pequeñas */
+    }
+
+    .col_int {
+        margin-top: 1rem; /* Reduce el margen superior */
+        text-align: center; /* Centra el texto en pantallas pequeñas */
+    }
+
+    .col_con .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .col_con img {
+        width: 80%; /* Ajusta el tamaño de la imagen para que no se vea muy grande */
+    }
+}
+
     </style>
     <!-- Fin de estilos de la página -->
 </head>
@@ -589,19 +533,20 @@
     <!--Fin de menú-->
 
     <!--Seccion intermedia-->
-    <div class="container-fluid text-center infocirculo">
-        <div class="card_int">
-            <div class="circle" style="--clr:#b68f51;">
-                <img src="assets/img/LOGO_AI_VECTORIZADO.png" alt="" class="logo" style="margin: 0 auto">
-            </div>
+    <div class="container_fluid text-center infocirculo">
+        <div class="row row3">
+          <div class="col col_int">
+            <h2>¡Café de calidad servicio de calidad!</h2>
+            <p>El lugar ideal para los amantes del café, los adictos a los postres y los devordadores de emparedados de calidad.</p>
+            <button type="button" class="btn btnOrdenar" data-bs-toggle="modal" data-bs-target="#modalOrdenar">Ordenar</button>
+          </div>
+          <div class="col col_con">
             <div class="content">
-                <h2>¡Café de calidad sevicio de calidad!</h2>
-                <p>El lugar ideal para los amantes del café, los adictos a los postres y los devordadores de emparedados de calidad.</p>
-                <a href="#">Export more</a>
+                <img src="assets/img/muestra.png" style="width: 60%;">
             </div>
-            <img src="assets/img/muestra.png" alt="" class="product_img" style="margin: 0 10rem;">
+          </div>
         </div>
-    </div>
+      </div>
     <!--Fin seccion intermedia-->
 
 </body>
