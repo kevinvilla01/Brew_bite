@@ -9,6 +9,14 @@
 
     <!-- Estilos de la página -->
     <style>
+        @font-face {
+            font-family: 'Lato';
+            src: url(fonts/Lato/Lato-Regular.ttf);
+        }
+        @font-face {
+            font-family: 'Serif';
+            src: url(fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf);
+        }
         .nav{
             text-align: center;
         }
@@ -57,11 +65,13 @@
             color: #fcfcfc;
             text-align: justify;
             width: 70%;
+            font-family: 'Serif';
         }
         .texto{
             color: #fcfcfc;
             text-align: justify;
             width: 70%;
+            font-family: 'Lato';
         }
         body{
             background-color: #b68f51;
@@ -168,7 +178,12 @@
     }
 
         /*Nosotros*/
-
+        .titulos{
+            font-family: 'Serif';
+        }
+        .fuente{
+            font-family: 'Lato';
+        }
         .nosotros{
             background-color: #fcfcfc;
         }
@@ -702,12 +717,12 @@
 
             <!--Informacion-->
             <div class="col infonosotros">
-                <h1 class="display-4">Pasteles, bocadillos y los mejores cafes de la zona!</h1>
-                <p class="lead">En Brew and Bite, no solo servimos café excepcional y comidas deliciosas, sino que también nos esforzamos por ser un espacio donde la comunidad pueda reunirse, compartir ideas y disfrutar de momentos especiales juntos.</p>
+                <h1 class="display-4 titulos">Pasteles, bocadillos y los mejores cafes de la zona!</h1>
+                <p class="lead fuente">En Brew and Bite, no solo servimos café excepcional y comidas deliciosas, sino que también nos esforzamos por ser un espacio donde la comunidad pueda reunirse, compartir ideas y disfrutar de momentos especiales juntos.</p>
                 <ul>
-                <li>Ambiente acogedor</li>
-                <li>Servicio al cliente excepcional</li>
-                <li>Wifi gratuito</li>
+                <li class="fuente">Ambiente acogedor</li>
+                <li class="fuente">Servicio al cliente excepcional</li>
+                <li class="fuente">Wifi gratuito</li>
                 </ul>
                 <button type="button" class="btn btnOrdenar" data-bs-toggle="modal" data-bs-target="#modalOrdenar">Ordenar</button>
             </div>
@@ -718,19 +733,19 @@
     <!--Seccion de Menu-->
 
     <div class="container-fluid text-center py-4 menu px-5">
-        <h3 id="menu">Nuestro delicioso menú</h3>
+        <h3 id="menu" class="titulos">Nuestro delicioso menú</h3>
         <div class="row">
             <div class="col">
                 <!--boton menu-->
-                <button type="button" class="btn btn-lg btn-block btnMenu">Cafe</button>
+                <button type="button" class="btn btn-lg btn-block btnMenu titulos">Café</button>
             </div>
             <div class="col">
                 <!-- boton menu-->
-                <button type="button" class="btn  btn-lg btn-block btnMenu">Postres</button>
+                <button type="button" class="btn  btn-lg btn-block btnMenu titulos">Postres</button>
             </div>
             <div class="col">
                 <!-- boton menu-->
-                <button type="button" class="btn btn-lg btn-block btnMenu">Bocadillos</button>
+                <button type="button" class="btn btn-lg btn-block btnMenu titulos">Bocadillos</button>
             </div>
 
             <div class="row row-cols-md-3 g-4 col_menu">
@@ -804,8 +819,8 @@
     <div class="container_fluid text-center infocirculo">
         <div class="row row3">
           <div class="col col_int">
-            <h2>¡Café de calidad servicio de calidad!</h2>
-            <p>El lugar ideal para los amantes del café, los adictos a los postres y los devordadores de emparedados de calidad.</p>
+            <h2 class="titulos" style="color: #F5f5dc;">¡Café de calidad, servicio de calidad!</h2>
+            <p class="fuente" style="color: #F5f5dc;">El lugar ideal para los amantes del café, los adictos a los postres y los devordadores de emparedados de calidad.</p>
             <button type="button" class="btn btnOrdenar" data-bs-toggle="modal" data-bs-target="#modalOrdenar">Ordenar</button>
           </div>
           <div class="col col_con">
@@ -856,14 +871,14 @@
       
           <div class="footer-info">
             <div class="contact">
-              <h3>Contactanos</h3>
+              <h3 class="titulos">Contáctanos</h3>
               <p>+1 (02352) 109-9222</p>
               <p>Brew&Bite@email.com</p>
               <a href=""><p>Av. Las Nieves 52 C.P. 55895 Méx.</p></a>
             </div>
-      
+
             <div class="hours">
-              <h3>Horario de apertura</h3>
+              <h3 class="titulos">Horario de apertura</h3>
               <p>Lunes a viernes: 07:00 - 21:00</p>
               <p>Sábado: 10:00 - 16:00</p>
             </div>
