@@ -292,6 +292,8 @@
         display: flex;
         justify-content: center;
         background-color: #F5EEDC;
+        width: 80%;
+        border-radius: 12px;
     }
 
     #galeria {
@@ -328,13 +330,13 @@
 
     .galeria2 img {
         width: 100%;
-        height: auto;
-        border: 4px solid #f5f5dc;
+        height: 100%;
+        border: 4px solid #8a6b3a;
     }
 
     .item button {
         position: absolute;
-        bottom: 1rem;
+        bottom: 0;
         left: 50%;
         transform: translateX(-50%);
         background-color: #d4a05c; /* Color del botón */
@@ -355,8 +357,10 @@
     /* Media query para pantallas muy pequeñas (como móviles) */
     @media (max-width: 480px) {
     .item button {
+        width: 3.1rem;
+        height: 1rem;
         padding: 3px 8px;    /* Padding aún más pequeño en móviles */
-        font-size: 0.7rem;   /* Tamaño de fuente más pequeño */
+        font-size: 0.44rem;   /* Tamaño de fuente más pequeño */
     }
     }
     .item button:hover{
@@ -827,7 +831,7 @@
 
       <!--Redes_footer-->
       <footer class="footer">
-        <div class="footer-content">
+        <div class="footer-content" id="redes">
           <div class="footer-logo">
             <img src="assets/img/LOGO_AI_VECTORIZADO.png" alt="Brew & Bite Logo" width="200" height="130">
           </div>
