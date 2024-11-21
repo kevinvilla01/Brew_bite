@@ -94,6 +94,9 @@
             margin-top: 10px;
             border: 10px solid #f5f5dc;
         }
+        #textoc{
+            color: #d4a05c;
+        }
         /* Ajustes responsivos */
         @media (max-width: 768px) {
             .container, .principal {
@@ -279,10 +282,17 @@
         .col_int{
             margin-top: 4rem;
         }
+        #textoi{
+            margin: 1rem auto;
+            width: 80%;
+        }
         /* Ajustes responsivos */
 @media (max-width: 768px) {
     .row3 {
         margin: 1rem; /* Reduce el margen en pantallas pequeñas */
+    }
+    #textoi{
+        width: 100%;
     }
 
     .col_int {
@@ -548,7 +558,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="modalOrdenarLabel">Menu</h1>
+                                        <h1 class="modal-title fs-5" id="modalOrdenarLabel">Menú</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
 
@@ -556,7 +566,7 @@
                                         <form>
                                             <div class="row mb-3">
                                                 <div class="col">
-                                                    <label for="productosCafe" class="form-label">Cafe</label>
+                                                    <label for="productosCafe" class="form-label">Café</label>
                                                     <select class="form-select" id="productosCafe" aria-label="Default select example">
                                                         <option disabled selected>Seleccione un producto</option>
                                                         <opgtion value="1">Expresso</option>
@@ -632,7 +642,7 @@
                                                 <input type="email" class="form-control" id="correo" placeholder="juanperez@gmail.com">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="telefono" class="form-label">Telefono</label>
+                                                <label for="telefono" class="form-label">Teléfono</label>
                                                 <input type="tel" class="form-control" id="telefono" placeholder="123456789">
                                             </div>
                                             <div class="mb-3">
@@ -660,7 +670,7 @@
                                     <div class="modal-body">
                                         <form>
                                             <div class="mb-3">
-                                                <label class="form-label" for="text">Confirmacion de pago:</label>
+                                                <label class="form-label" for="text">Confirmación de pago:</label>
                                                 <input class="form-control" type="text" name="total" id="total" value="$300.00" readonly>
                                             </div>
 
@@ -703,7 +713,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        Deseas agregar el producto a tu carrito?
+                                        ¿Deseas agregar el producto a tu carrito?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -793,7 +803,7 @@
             <!--Informacion-->
             <div class="col infonosotros">
                 <h1 class="display-4 titulos">Pasteles, bocadillos y los mejores cafes de la zona!</h1>
-                <p class="lead fuente">En Brew and Bite, no solo servimos café excepcional y comidas deliciosas, sino que también nos esforzamos por ser un espacio donde la comunidad pueda reunirse, compartir ideas y disfrutar de momentos especiales juntos.</p>
+                <p class="lead fuente" id="textoc">En Brew and Bite, no solo servimos café excepcional y comidas deliciosas, sino que también nos esforzamos por ser un espacio donde la comunidad pueda reunirse, compartir ideas y disfrutar de momentos especiales juntos.</p>
                 <ul>
                 <li class="fuente">Ambiente acogedor</li>
                 <li class="fuente">Servicio al cliente excepcional</li>
@@ -894,8 +904,8 @@
     <div class="container_fluid text-center infocirculo">
         <div class="row row3">
             <div class="col col_int">
-                <h2 class="titulos">¡Café de calidad, servicio de calidad!</h2>
-                <pc class="fuente">El lugar ideal para los amantes del café, los adictos a los postres y los devordadores de emparedados de calidad.</p>
+                <h2 class="titulos" style="color: #fcfcfc;">¡Café de calidad, servicio de calidad!</h2>
+                <p class="fuente" id="textoi" style="color: #fcfcfc;">El lugar ideal para los amantes del café, los adictos a los postres y los devordadores de emparedados de calidad.</p>
                 <button type="button" class="btn btnOrdenar" data-bs-toggle="modal" data-bs-target="#modalOrdenar">Ordenar</button>
             </div>
             <div class="col col_con">
