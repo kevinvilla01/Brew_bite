@@ -31,18 +31,18 @@ CREATE TABLE confirmacion_pago (
 );
 
 INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('EXPRESSO', 45, 'EXPRESSO', '/assets/menu_img/cafe_expresso.png', 'CAFE');
-INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('AMERICANO', 10, 'AMERICANO', '/assets/menu_img/cafe_americano.png', 'CAFE');
+INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('AMERICANO', 35, 'AMERICANO', '/assets/menu_img/cafe_americano.png', 'CAFE');
 INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('CAPUCHINO', 45, 'CAPUCHINO', '/assets/menu_img/cafe_capuchino.png', 'CAFE');
 INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('FRAPPE', 50, 'FRAPPE', '/assets/menu_img/cafe_frappe.png', 'CAFE');
 INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('LATTE', 70, 'LATTE', '/assets/menu_img/cafe_latte.png', 'CAFE');
 INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('MOCCA', 45, 'MOCCA', '/assets/menu_img/cafe_mocca.png', 'CAFE');
 
-INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('CHEESE CAKE', 10, 'CHEESE CAKE', '/assets/menu_img/postre_chessecake', 'POSTRE');
-INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('BROWNIE C', 10, 'BROWNIE C', '/assets/menu_img/postre_browniec', 'POSTRE');
-INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('CREPAS', 10, 'CREPAS', '/assets/menu_img/postre_crepas', 'POSTRE');
-INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('FLAN', 10, 'FLAN', '/assets/menu_img/postre_flan', 'POSTRE');
-INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('PASTEL DE CHOCOLATE', 10, 'PASTEL DE CHOCOLATE', '/assets/menu_img/postre_pasteldechocolate', 'POSTRE');
-INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('CUPCAKE', 10, 'CUPCAKE', '/assets/menu_img/postre_cupcake', 'POSTRE');
+INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('CHEESE CAKE', 45, 'CHEESE CAKE', '/assets/menu_img/postre_chessecake', 'POSTRE');
+INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('BROWNIE C', 35, 'BROWNIE C', '/assets/menu_img/postre_browniec', 'POSTRE');
+INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('CREPAS', 45, 'CREPAS', '/assets/menu_img/postre_crepas', 'POSTRE');
+INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('FLAN', 50, 'FLAN', '/assets/menu_img/postre_flan', 'POSTRE');
+INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('PASTEL DE CHOCOLATE', 70, 'PASTEL DE CHOCOLATE', '/assets/menu_img/postre_pasteldechocolate', 'POSTRE');
+INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('CUPCAKE', 45, 'CUPCAKE', '/assets/menu_img/postre_cupcake', 'POSTRE');
 
 INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('HOTDOG', 10, 'HOTDOG', '/assets/menu_img/bocadillos_hotdog.png', 'BOCADILLO');
 INSERT INTO menu (nombre, precio, descripcion, foto, categoria) VALUES ('BAGUETTE SALMON', 10, 'BAGUETTE SALMON', '/assets/menu_img/bocadillos_baguette.png', 'BOCADILLO');
