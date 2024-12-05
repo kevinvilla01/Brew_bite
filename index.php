@@ -700,16 +700,6 @@
                                 }
                             }
 
-                            // Función para preparar la orden al abrir el segundo modal
-                            function prepararOrden() {
-                                const listaProductosModal = document.getElementById('listaProductosModal');
-                                const descAdicionalModal = document.getElementById('descAdicionalModal');
-
-                                // Llenar los campos del segundo modal con los datos del primer modal
-                                listaProductosModal.value = document.getElementById('listaProductos').value;
-                                descAdicionalModal.value = document.getElementById('descAdicional').value;
-                            }
-
                             // Agregar eventos a los selects
                             document.getElementById('productosCafe').addEventListener('change', () => manejarCambio('productosCafe'));
                             document.getElementById('productosPostres').addEventListener('change', () => manejarCambio('productosPostres'));
