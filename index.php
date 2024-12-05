@@ -593,7 +593,7 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <textarea class="form-control" id="descAdiciona" rows="3" placeholder="Descripción adicional"></textarea>
+                                                <textarea class="form-control" id="descAdicional" rows="3" placeholder="Descripción adicional"></textarea>
                                             </div>
                                         </form>
                                     </div>
