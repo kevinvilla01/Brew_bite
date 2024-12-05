@@ -604,44 +604,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Modal 2-->
-                        <div class="modal fade" id="modalOrdenar2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalOrdenar2Label" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="modalOrdenarLabel">Orden</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="nombre" class="form-label">Nombre</label>
-                                                <input type="text" class="form-control" id="nombre" placeholder="Juan Perez">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="correo" class="form-label">Correo</label>
-                                                <input type="email" class="form-control" id="correo" placeholder="juanperez@gmail.com">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="telefono" class="form-label">Teléfono</label>
-                                                <input type="tel" class="form-control" id="telefono" placeholder="123456789">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="listaProductos" class="form-label">Lista de productos</label>
-                                                <textarea class="form-control" id="listaProductosModal" rows="6" placeholder="Lista de productos:" readonly></textarea>
-                                            </div>
-                                            <input type="hidden" id="descAdicionalModal" value="">
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary btnOrdenar" data-bs-target="#modalOrdenar3" data-bs-toggle="modal">Continuar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <script>
                             const productosSeleccionados = {};
 
@@ -720,6 +682,43 @@
                             cargarProductos('postre', 'productosPostres');
                             cargarProductos('bocadillo', 'productosBocadillos');
                         </script>
+                        <!-- Modal 2-->
+                        <div class="modal fade" id="modalOrdenar2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalOrdenar2Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modalOrdenarLabel">Orden</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="nombre" class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" id="nombre" placeholder="Juan Perez">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="correo" class="form-label">Correo</label>
+                                                <input type="email" class="form-control" id="correo" placeholder="juanperez@gmail.com">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="telefono" class="form-label">Teléfono</label>
+                                                <input type="tel" class="form-control" id="telefono" placeholder="123456789">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="listaProductos" class="form-label">Lista de productos</label>
+                                                <textarea class="form-control" id="listaProductosModal" rows="6" placeholder="Lista de productos:" readonly></textarea>
+                                            </div>
+                                            <input type="hidden" id="descAdicionalModal" value="">
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-primary btnOrdenar" data-bs-target="#modalOrdenar3" data-bs-toggle="modal">Continuar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Modal 3-->
                         <div class="modal fade" id="modalOrdenar3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalOrdenar3Label" aria-hidden="true">
                             <div class="modal-dialog">
