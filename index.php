@@ -623,8 +623,8 @@
 
                             // Cargar productos en los selects
                             cargarProductos('cafe', 'productosCafe');
-                            cargarProductos('postres', 'productosPostres');
-                            cargarProductos('bocadillos', 'productosBocadillos');
+                            cargarProductos('postre', 'productosPostres');
+                            cargarProductos('bocadillo', 'productosBocadillos');
                         </script>
                         <!-- Modal 2-->
                         <div class="modal fade" id="modalOrdenar2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalOrdenar2Label" aria-hidden="true">
