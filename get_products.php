@@ -20,6 +20,10 @@ $tipo = $_GET['tipo'];
 $sql = "SELECT nombre, precio, foto FROM productos WHERE categoria = $1";
 $result = pg_query_params($conn, $sql, array($tipo));
 
+if (!$result) {
+    die(json_encode(['error' => 'Error en la consulta: ' . pg_last_error($conn)]));
+}
+
 // Crear un array para almacenar los productos
 $productos = [];
 while ($row = pg_fetch_assoc($result)) {
