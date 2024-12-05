@@ -758,6 +758,8 @@
                                     if (data.success) {
                                         // Si la inserción fue exitosa, avanzar al modal 3
                                         $('#modalOrdenar2').modal('hide');
+                                        // Establecer el total en el modal 3
+                                        document.getElementById('totalOrden').textContent = total; // Mostrar el total en el modal 3
                                         $('#modalOrdenar3').modal('show');
                                     } else {
                                         alert('Error al insertar la orden: ' + data.message);
@@ -796,7 +798,7 @@
                                         <form>
                                             <div class="mb-3">
                                                 <label class="form-label" for="text">Confirmación de pago:</label>
-                                                <input class="form-control" type="text" name="total" id="total" value="$300.00" readonly>
+                                                <input class="form-control" type="text" name="totalOrden" id="totalOrden" value="$300.00" readonly>
                                             </div>
 
                                             <div class="mb-3">
