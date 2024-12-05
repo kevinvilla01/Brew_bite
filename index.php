@@ -599,7 +599,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary btnOrdenar" data-bs-target="#modalOrdenar2" data-bs-toggle="modal">Continuar</button>
+                                        <button type="button" class="btn btn-primary btnOrdenar" data-bs-target="#modalOrdenar2" onclick="prepararOrden()" data-bs-toggle="modal">Continuar</button>
                                     </div>
                                 </div>
                             </div>
