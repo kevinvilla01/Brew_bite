@@ -19,7 +19,7 @@ if (!$conn) {
 }
 
 // Obtener tipo de producto desde la solicitud
-$tipo = isset($_GET['tipo']) ? strtolower($_GET['tipo']) : ''; // Convertir a minúsculas
+$tipo = isset($_GET['tipo']) ? strtoupper($_GET['tipo']) : ''; // Convertir a minúsculas
 $tipos_validos = ['cafe', 'postres', 'bocadillos'];
 
 if (!in_array($tipo, $tipos_validos)) {
