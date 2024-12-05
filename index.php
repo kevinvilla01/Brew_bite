@@ -706,10 +706,13 @@
                                                 <input type="tel" class="form-control" id="telefono" placeholder="123456789">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="listaProductos" class="form-label">Lista de productos</label>
+                                                <label for="listaProductosModal" class="form-label">Lista de productos</label>
                                                 <textarea class="form-control" id="listaProductosModal" rows="6" placeholder="Lista de productos:" readonly></textarea>
                                             </div>
-                                            <input type="hidden" id="descAdicionalModal" value="">
+                                            <div class="mb-3">
+                                                <label for="descAdicionalModal" class="form-label">Lista de productos</label>
+                                                <textarea class="form-control" id="descAdicionalModal" rows="" placeholder="Descripción adicional" readonly></textarea>
+                                            </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
