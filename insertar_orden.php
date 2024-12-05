@@ -39,7 +39,9 @@ $sql = "INSERT INTO orden (nombre, correo, telefono, lista_productos, total, des
 $result = pg_query_params($conn, $sql, array($nombre, $correo, $telefono, $lista_productos, $total, $descripcion_adicional, $fecha, $estado));
 
 if ($result) {
-    echo json_encode(['success' => true, 'message' => 'Orden insertada correctamente.']);
+    $row = pg_fetch_assoc($result);
+    $id_orden = $row['id_orden'];
+    echo json_encode(['success' => true, 'id_orden' => $id_orden]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Error al insertar la orden: ' . pg_last_error($conn)]);
 }
