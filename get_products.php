@@ -17,7 +17,7 @@ if (!$conn) {
 $tipo = $_GET['tipo'];
 
 // Preparar y ejecutar la consulta
-$sql = "SELECT nombre, precio, imagen FROM productos WHERE tipo = $1";
+$sql = "SELECT nombre, precio, foto FROM productos WHERE categoria = $1";
 $result = pg_query_params($conn, $sql, array($tipo));
 
 // Crear un array para almacenar los productos
