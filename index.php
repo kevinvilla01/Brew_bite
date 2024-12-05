@@ -589,11 +589,11 @@
 
                                             <div class="mb-3">
                                                 <label for="listaProductos" class="form-label">Lista de productos</label>
-                                                <textarea class="form-control" id="listaProductosModal" rows="6" placeholder="Lista de productos:"></textarea>
+                                                <textarea class="form-control" id="listaProductos" rows="6" placeholder="Lista de productos:"></textarea>
                                             </div>
 
                                             <div class="mb-3">
-                                                <textarea class="form-control" id="descAdicionalModal" rows="3" placeholder="Descripción adicional"></textarea>
+                                                <textarea class="form-control" id="descAdiciona" rows="3" placeholder="Descripción adicional"></textarea>
                                             </div>
                                         </form>
                                     </div>
@@ -630,9 +630,9 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="listaProductos" class="form-label">Lista de productos</label>
-                                                <textarea class="form-control" id="listaProductos" rows="6" placeholder="Lista de productos:" readonly></textarea>
+                                                <textarea class="form-control" id="listaProductosModal" rows="6" placeholder="Lista de productos:" readonly></textarea>
                                             </div>
-                                            <input type="hidden" id="descAdicional" value="">
+                                            <input type="hidden" id="descAdicionalModal" value="">
                                         </form>
                                     </div>
                                     <div class="modal-footer">
@@ -698,6 +698,16 @@
                                     // Limpiar la selección
                                     select.selectedIndex = 0; // Volver a la opción "Seleccione un producto"
                                 }
+                            }
+
+                            // Función para preparar la orden al abrir el segundo modal
+                            function prepararOrden() {
+                                const listaProductosModal = document.getElementById('listaProductosModal');
+                                const descAdicionalModal = document.getElementById('descAdicionalModal');
+
+                                // Llenar los campos del segundo modal con los datos del primer modal
+                                listaProductosModal.value = document.getElementById('listaProductos').value;
+                                descAdicionalModal.value = document.getElementById('descAdicional').value;
                             }
 
                             // Agregar eventos a los selects
