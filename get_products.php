@@ -28,7 +28,7 @@ if (!in_array($tipo, $tipos_validos)) {
 }
 
 // Preparar y ejecutar la consulta
-$sql = "SELECT nombre, precio, foto FROM menu WHERE categoria = $1"; // Cambié 'tipo' por 'categoria'
+$sql = "SELECT nombre, precio, foto, id_producto FROM menu WHERE categoria = $1"; // Cambié 'tipo' por 'categoria'
 $result = pg_query_params($conn, $sql, array($tipo));
 
 if (!$result) {
