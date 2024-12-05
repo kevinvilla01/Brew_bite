@@ -822,79 +822,19 @@
         <div class="row">
             <div class="col">
                 <!--boton menu-->
-                <button type="button" class="btn btn-lg btn-block btnMenu titulos">Café</button>
+                <button type="button" class="btn btn-lg btn-block btnMenu titulos" id="btnCafe">Café</button>
             </div>
             <div class="col">
                 <!-- boton menu-->
-                <button type="button" class="btn  btn-lg btn-block btnMenu titulos">Postres</button>
+                <button type="button" class="btn  btn-lg btn-block btnMenu titulos" id="btnPostres">Postres</button>
             </div>
             <div class="col">
                 <!-- boton menu-->
-                <button type="button" class="btn btn-lg btn-block btnMenu titulos">Bocadillos</button>
+                <button type="button" class="btn btn-lg btn-block btnMenu titulos" id="btnBocadillos">Bocadillos</button>
             </div>
 
-            <div class="row row-cols-md-3 g-4 col_menu">
-                <!-- Primera fila de 3 cards -->
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/Expresso.png" class="card-img-top rounded-circle" alt="Expresso" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Expresso</h5>
-                            <p class="card-text">Precio: $45.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/Americano.png" class="card-img-top rounded-circle" alt="Americano" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Americano</h5>
-                            <p class="card-text">Precio: $35.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/Capuchino.png" class="card-img-top rounded-circle" alt="Capuchino" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Capuchino</h5>
-                            <p class="card-text">Precio: $45.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/frappe.png" class="card-img-top rounded-circle" alt="Frappé" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Frappé</h5>
-                            <p class="card-text">Precio: $50.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/latte.png" class="card-img-top rounded-circle" alt="Latte" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Latte</h5>
-                            <p class="card-text">Precio: $70.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/mocca.png" class="card-img-top rounded-circle" alt="Mocca" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Mocca</h5>
-                            <p class="card-text">Precio: $45.00</p>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="row row-cols-md-3 g-4 col_menu" id="contenedor-menu">
+                <!-- CARGAR LAS CARDS DEL MENÚ EN EL CONTENEDOR -->
             </div>
         </div>
     </div>
@@ -979,6 +919,36 @@
             <p>&copy; 2024. Brew & Bite Company. Todos los derechos reservados</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('btnCafe').addEventListener('click', () => cargarProductos('CAFE'));
+        document.getElementById('btnPostres').addEventListener('click', () => cargarProductos('POSTRE'));
+        document.getElementById('btnBocadillos').addEventListener('click', () => cargarProductos('BOCADILLO'));
+
+        // Función para cargar los productos según el tipo seleccionado
+        function cargarProductos(tipo) {
+            const contenedor = document.getElementById('contenedor-menu');
+            contenedor.innerHTML = ''; // Limpiar el contenedor antes de cargar nuevos productos
+
+            fetch(`get_products.php?tipo=${tipo}`)
+                .then(response => response.json())
+                .then(productos => {
+                    productos.forEach(producto => {
+                        const card = document.createElement('div');
+                        card.className = 'card cardmenu h-100';
+                        card.innerHTML = `
+                            <img src="${producto.foto}" class="card-img-top rounded-circle" alt="${producto.nombre}" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
+                            <div class="card-body">
+                                <h5 class="card-title">${producto.nombre}</h5>
+                                <p class="card-text">Precio: $${producto.precio}</p>
+                            </div>
+                        `;
+                        contenedor.appendChild(card);
+                    });
+                })
+                .catch(error => console.error('Error al cargar los productos:', error));
+        }
+    </script>
 
 </body>
 </html>
