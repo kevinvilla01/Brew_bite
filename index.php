@@ -934,6 +934,11 @@
                 .then(response => response.json())
                 .then(productos => {
                     productos.forEach(producto => {
+                        // Crear un div con la clase 'col'
+                        const colDiv = document.createElement('div');
+                        colDiv.className = 'col';
+
+                        // Crear la tarjeta
                         const card = document.createElement('div');
                         card.className = 'card cardmenu h-100';
                         card.innerHTML = `
@@ -943,7 +948,12 @@
                                 <p class="card-text">Precio: $${producto.precio}</p>
                             </div>
                         `;
-                        contenedor.appendChild(card);
+
+                        // Agregar la tarjeta al div 'col'
+                        colDiv.appendChild(card);
+
+                        // Agregar el div 'col' al contenedor principal
+                        contenedor.appendChild(colDiv);
                     });
                 })
                 .catch(error => console.error('Error al cargar los productos:', error));
