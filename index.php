@@ -569,12 +569,6 @@
                                                     <label for="productosCafe" class="form-label">Café</label>
                                                     <select class="form-select" id="productosCafe" aria-label="Default select example">
                                                         <option disabled selected>Seleccione un producto</option>
-                                                        <option value="1">Expresso</option>
-                                                        <option value="2">Americano</option>
-                                                        <option value="3">Latte</option>
-                                                        <option value="4">Mocca</option>
-                                                        <option value="5">Capucchino</option>
-                                                        <option value="6">Frappe</option>
                                                     </select>
                                                 </div>
 
@@ -582,12 +576,6 @@
                                                     <label for="productosPostres" class="form-label">Postres</label>
                                                     <select class="form-select" id="productosPostres" aria-label="Default select example">
                                                         <option disabled selected>Seleccione un producto</option>
-                                                        <option value="1">Chesse Cake</option>
-                                                        <option value="2">Brownie C</option>
-                                                        <option value="3">Crepas</option>
-                                                        <option value="4">Flan</option>
-                                                        <option value="5">Pastel de chocolate</option>
-                                                        <option value="6">Cupcake</option>
                                                     </select>
                                                 </div>
 
@@ -595,12 +583,6 @@
                                                     <label for="productosBocadillos" class="form-label">Bocadillos</label>
                                                     <select class="form-select" id="productosBocadillos" aria-label="Default select example">
                                                         <option disabled selected>Seleccione un producto</option>
-                                                        <option value="1">Hotdog</option>
-                                                        <option value="2">Baguette Salmon</option>
-                                                        <option value="3">Baguette Res</option>
-                                                        <option value="4">Pan relleno</option>
-                                                        <option value="5">Galletas</option>
-                                                        <option value="6">Pan de muerto</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -622,6 +604,28 @@
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            // Función para cargar productos en el select
+                            function cargarProductos(tipo, selectId) {
+                                fetch(`get_products.php?tipo=${tipo}`)
+                                    .then(response => response.json())
+                                    .then(productos => {
+                                        const select = document.getElementById(selectId);
+                                        productos.forEach(producto => {
+                                            const option = document.createElement('option');
+                                            option.value = producto.id_producto;
+                                            option.textContent = producto.nombre;
+                                            select.appendChild(option);
+                                        });
+                                    })
+                                    .catch(error => console.error('Error al cargar los productos:', error));
+                            }
+
+                            // Cargar productos en los selects
+                            cargarProductos('cafe', 'productosCafe');
+                            cargarProductos('postres', 'productosPostres');
+                            cargarProductos('bocadillos', 'productosBocadillos');
+                        </script>
                         <!-- Modal 2-->
                         <div class="modal fade" id="modalOrdenar2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalOrdenar2Label" aria-hidden="true">
                             <div class="modal-dialog">
