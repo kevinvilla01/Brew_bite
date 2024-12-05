@@ -624,6 +624,14 @@
                                     .catch(error => console.error('Error al cargar los productos:', error));
                             }
 
+                            // Función para actualizar la lista de productos
+                            function actualizarListaProductos() {
+                                const lista = document.getElementById('listaProductos');
+                                lista.value = Object.entries(productosSeleccionados)
+                                    .map(([id, { nombre, precio, cantidad }]) => `${nombre} - Precio: $${precio} - Cantidad: ${cantidad}`)
+                                    .join('\n');
+                            }
+
                             //Funcion para manejar el cambio en selects
                             function manejarCambio(selectId){
                                 const select = document.getElementById(selectId);
