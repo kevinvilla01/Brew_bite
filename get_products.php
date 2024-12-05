@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 header('Content-Type: application/json; charset=utf-8'); // Establecer el tipo de contenido y la codificación
 header('Cache-Control: no-cache, must-revalidate'); // No usar caché
 header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Fecha en el pasado
@@ -31,7 +28,7 @@ if (!in_array($tipo, $tipos_validos)) {
 }
 
 // Preparar y ejecutar la consulta
-$sql = "SELECT nombre, precio, foto FROM menu WHERE tipo = $1";
+$sql = "SELECT nombre, precio, foto FROM menu WHERE categoria = $1"; // Cambié 'tipo' por 'categoria'
 $result = pg_query_params($conn, $sql, array($tipo));
 
 if (!$result) {
