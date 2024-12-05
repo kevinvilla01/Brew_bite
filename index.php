@@ -838,6 +838,55 @@
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            function confirmarPago() {
+                                const totalOrden = document.getElementById('totalOrden').value;
+                                const orden = document.getElementById('orden').value;
+                                const numTarjeta = document.getElementById('numTarjeta').value;
+                                const cvv = document.getElementById('cvv').value;
+                                const fecha = document.getElementById('fecha').value;
+
+                                // Crear un objeto con los datos
+                                const data = {
+                                    total_orden: totalOrden,
+                                    orden: orden,
+                                    num_tarjeta: numTarjeta,
+                                    cvv: cvv,
+                                    fecha_expiracion: fecha
+                                };
+
+                                // Enviar los datos al servidor usando fetch
+                                fetch('confirmar_pago.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(data)
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        // Si la confirmación fue exitosa, mostrar un mensaje de éxito
+                                        alert('Pago confirmado con éxito!');
+                                        // Limpiar los campos del formulario
+                                        document.getElementById('numTarjeta').value = '';
+                                        document.getElementById('cvv').value = '';
+                                        document.getElementById('fecha').value = '';
+                                        document.getElementById('totalOrden').value = '';
+                                        document.getElementById('orden').value = '';
+                                        // Cerrar el modal
+                                        $('#modalOrdenar3').modal('hide');
+
+                                    } else {
+                                        alert('Error al confirmar el pago: ' + data.message);
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    alert('Error al confirmar el pago');
+                                });
+                            }
+                        </script>
 
                         <!-- Modal Agregar al carrito-->
                         <div class="modal fade" id="modalAgregar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAgregarLabel" aria-hidden="true">
