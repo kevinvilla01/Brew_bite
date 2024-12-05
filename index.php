@@ -762,8 +762,13 @@
                                         document.getElementById('totalOrden').value = total; // Mostrar el total en el modal 3
                                         $('#modalOrdenar3').modal('show');
                                         // Limpiar los campos del formulario
-                                        document.getElementById('formOrdenar').reset();
-                                        document.getElementById('formOrden').reset();
+                                        document.getElementById('nombre').value = '';
+                                        document.getElementById('correo').value = '';
+                                        document.getElementById('telefono').value = '';
+                                        document.getElementById('listaProductos').value = '';
+                                        document.getElementById('descAdicional').value = '';
+                                        document.getElementById('listaProductosModal').value = '';
+                                        document.getElementById('descAdicionalModal').value = '';
                                     } else {
                                         alert('Error al insertar la orden: ' + data.message);
                                     }
