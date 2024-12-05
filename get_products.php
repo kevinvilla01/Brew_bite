@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 header('Content-Type: application/json; charset=utf-8'); // Establecer el tipo de contenido y la codificación
 header('Cache-Control: no-cache, must-revalidate'); // No usar caché
 header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Fecha en el pasado
