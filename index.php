@@ -565,7 +565,7 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <form>
+                                        <form id="formOrdenar">
                                             <div class="row mb-3">
                                                 <div class="col">
                                                     <label for="productosCafe" class="form-label">Café</label>
@@ -761,6 +761,9 @@
                                         // Establecer el total en el modal 3
                                         document.getElementById('totalOrden').value = total; // Mostrar el total en el modal 3
                                         $('#modalOrdenar3').modal('show');
+                                        // Limpiar los campos del formulario
+                                        document.getElementById('formOrdenar').reset();
+                                        document.getElementById('formOrden').reset();
                                     } else {
                                         alert('Error al insertar la orden: ' + data.message);
                                     }
