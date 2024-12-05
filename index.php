@@ -662,16 +662,6 @@
                                 }
                             }
 
-                            // Función para preparar la orden al abrir el segundo modal
-                            function prepararOrden() {
-                                const listaProductosModal = document.getElementById('listaProductosModal');
-                                const descAdicionalModal = document.getElementById('descAdicionalModal');
-
-                                // Llenar los campos del segundo modal con los datos del primer modal
-                                listaProductosModal.value = document.getElementById('listaProductos').value;
-                                descAdicionalModal.value = document.getElementById('descAdicional').value;
-                            }
-
                             // Agregar eventos a los selects
                             document.getElementById('productosCafe').addEventListener('change', () => manejarCambio('productosCafe'));
                             document.getElementById('productosPostres').addEventListener('change', () => manejarCambio('productosPostres'));
@@ -719,6 +709,17 @@
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            // Función para preparar la orden al abrir el segundo modal
+                            function prepararOrden() {
+                                const listaProductosModal = document.getElementById('listaProductosModal');
+                                const descAdicionalModal = document.getElementById('descAdicionalModal');
+
+                                // Llenar los campos del segundo modal con los datos del primer modal
+                                listaProductosModal.value = document.getElementById('listaProductos').value;
+                                descAdicionalModal.value = document.getElementById('descAdicional').value;
+                            }
+                        </script>
                         <!-- Modal 3-->
                         <div class="modal fade" id="modalOrdenar3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalOrdenar3Label" aria-hidden="true">
                             <div class="modal-dialog">
