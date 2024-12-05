@@ -31,17 +31,21 @@ $fecha = date('Y-m-d');
 // Estado por defecto
 $estado = 'pendiente';
 
-// Preparar la consulta SQL para insertar la orden
+// Preparar la consulta SQL para insertar la orden y devolver el id_orden
 $sql = "INSERT INTO orden (nombre, correo, telefono, lista_productos, total, descripcion_adicional, fecha, estado) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id_orden";
 
 // Ejecutar la consulta
 $result = pg_query_params($conn, $sql, array($nombre, $correo, $telefono, $lista_productos, $total, $descripcion_adicional, $fecha, $estado));
 
 if ($result) {
     $row = pg_fetch_assoc($result);
-    $id_orden = $row['id_orden'];
-    echo json_encode(['success' => true, 'id_orden' => $id_orden]);
+    if ($row) {
+        $id_orden = $row['id_orden'];
+        echo json_encode(['success' => true, 'id_orden' => $id_orden]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'No se pudo obtener el id de la orden.']);
+    }
 } else {
     echo json_encode(['success' => false, 'message' => 'Error al insertar la orden: ' . pg_last_error($conn)]);
 }
