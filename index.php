@@ -833,7 +833,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary btnOrdenar">Pagar ahora</button>
+                                        <button type="button" class="btn btn-primary btnOrdenar" onclick="confirmarPago()">Pagar ahora</button>
                                     </div>
                                 </div>
                             </div>
