@@ -5,7 +5,7 @@ header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Fecha en el pasado
 
 $host = "localhost";
 $port = "5432"; // Puerto por defecto de PostgreSQL
-$dbname = "brewbite";
+$dbname = "postgres";
 $user = "postgres";
 $password = "postgres";
 
