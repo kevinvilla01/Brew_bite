@@ -710,8 +710,8 @@
                                                 <textarea class="form-control" id="listaProductosModal" rows="6" placeholder="Lista de productos:" readonly></textarea>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="descAdicionalModal" class="form-label">Lista de productos</label>
-                                                <textarea class="form-control" id="descAdicionalModal" rows="" placeholder="Descripción adicional" readonly></textarea>
+                                                <label for="descAdicionalModal" class="form-label">Descripción adicional</label>
+                                                <textarea class="form-control" id="descAdicionalModal" rows="3" placeholder="Descripción adicional" readonly></textarea>
                                             </div>
                                         </form>
                                     </div>
