@@ -935,7 +935,7 @@
                 .then(productos => {
                     productos.forEach(producto => {
                         const card = document.createElement('div');
-                        card.className = 'col card cardmenu h-100';
+                        card.className = 'card cardmenu h-100';
                         card.innerHTML = `
                             <img src="${producto.foto}" class="card-img-top rounded-circle" alt="${producto.nombre}" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
                             <div class="card-body">
