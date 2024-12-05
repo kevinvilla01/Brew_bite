@@ -803,7 +803,7 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <form>
+                                        <form id="formPago">
                                             <div class="mb-3">
                                                 <label class="form-label" for="text">Confirmación de pago:</label>
                                                 <input class="form-control" type="text" name="totalOrden" id="totalOrden" placeholder="$300.00" readonly>
