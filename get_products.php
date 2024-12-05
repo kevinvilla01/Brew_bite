@@ -20,7 +20,7 @@ if (!$conn) {
 
 // Obtener tipo de producto desde la solicitud
 $tipo = isset($_GET['tipo']) ? strtoupper($_GET['tipo']) : ''; // Convertir a minúsculas
-$tipos_validos = ['cafe', 'postres', 'bocadillos'];
+$tipos_validos = ['CAFE', 'POSTRE', 'BOCADILLO']; // Lista de tipos de productos válidos
 
 if (!in_array($tipo, $tipos_validos)) {
     echo json_encode(['error' => 'Tipo de producto no válido']);
