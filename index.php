@@ -769,6 +769,9 @@
                                         document.getElementById('descAdicional').value = '';
                                         document.getElementById('listaProductosModal').value = '';
                                         document.getElementById('descAdicionalModal').value = '';
+                                        // Guardar el id_orden para usarlo en la confirmación de pago
+                                        const id_orden = data.id_orden;
+                                        document.getElementById('orden').value = id_orden;
                                     } else {
                                         alert('Error al insertar la orden: ' + data.message);
                                     }
