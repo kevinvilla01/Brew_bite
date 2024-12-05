@@ -759,7 +759,7 @@
                                         // Si la inserción fue exitosa, avanzar al modal 3
                                         $('#modalOrdenar2').modal('hide');
                                         // Establecer el total en el modal 3
-                                        document.getElementById('totalOrden').textContent = total; // Mostrar el total en el modal 3
+                                        document.getElementById('totalOrden').value = total; // Mostrar el total en el modal 3
                                         $('#modalOrdenar3').modal('show');
                                     } else {
                                         alert('Error al insertar la orden: ' + data.message);
