@@ -692,7 +692,7 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <form>
+                                        <form id="formOrden">
                                             <div class="mb-3">
                                                 <label for="nombre" class="form-label">Nombre</label>
                                                 <input type="text" class="form-control" id="nombre" placeholder="Juan Perez">
@@ -714,11 +714,70 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary btnOrdenar" data-bs-target="#modalOrdenar3" data-bs-toggle="modal">Continuar</button>
+                                        <button type="button" class="btn btn-primary btnOrdenar" onclick="insertarOrden()">Continuar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            function insertarOrden() {
+                                const nombre = document.getElementById('nombre').value;
+                                const correo = document.getElementById('correo').value;
+                                const telefono = document.getElementById('telefono').value;
+                                const listaProductos = document.getElementById('listaProductosModal').value;
+                                const descAdicional = document.getElementById('descAdicionalModal').value;
+
+                                // Aquí puedes calcular el total, por ejemplo, sumando los precios de los productos
+                                const total = calcularTotal(); // Implementa esta función según tu lógica
+
+                                // Crear un objeto con los datos
+                                const data = {
+                                    nombre: nombre,
+                                    correo: correo,
+                                    telefono: telefono,
+                                    lista_productos: listaProductos,
+                                    total: total,
+                                    descripcion_adicional: descAdicional
+                                };
+
+                                // Enviar los datos al servidor usando fetch
+                                fetch('insertar_orden.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(data)
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        // Si la inserción fue exitosa, avanzar al modal 3
+                                        $('#modalOrdenar2').modal('hide');
+                                        $('#modalOrdenar3').modal('show');
+                                    } else {
+                                        alert('Error al insertar la orden: ' + data.message);
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    alert('Error al insertar la orden');
+                                });
+                            }
+
+                            // Función para calcular el total (implementa tu lógica aquí)
+                            function calcularTotal() {
+                                let total = 0;
+
+                                // Iterar sobre los productos seleccionados
+                                for (const id in productosSeleccionados) {
+                                    const producto = productosSeleccionados[id];
+                                    // Calcular el total sumando el precio por la cantidad
+                                    total += producto.precio * producto.cantidad;
+                                }
+
+                                return total; // Retorna el total calculado
+                            }
+                        </script>
                         <!-- Modal 3-->
                         <div class="modal fade" id="modalOrdenar3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalOrdenar3Label" aria-hidden="true">
                             <div class="modal-dialog">
