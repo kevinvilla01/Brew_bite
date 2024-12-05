@@ -605,6 +605,8 @@
                             </div>
                         </div>
                         <script>
+                            const productosSeleccionados = {};
+
                             // Función para cargar productos en el select
                             function cargarProductos(tipo, selectId) {
                                 fetch(`get_products.php?tipo=${tipo}`)
@@ -615,11 +617,47 @@
                                             const option = document.createElement('option');
                                             option.value = producto.id_producto;
                                             option.textContent = producto.nombre;
+                                            option.dataset.precio = producto.precio;
                                             select.appendChild(option);
                                         });
                                     })
                                     .catch(error => console.error('Error al cargar los productos:', error));
                             }
+
+                            //Funcion para manejar el cambio en selects
+                            function manejarCambio(selectId){
+                                const select = document.getElementById(selectId);
+                                const selectedOption = select.options[select.selectedIndex];
+
+                                if (selectedOption.value) {
+                                    const idProducto = selectedOption.value;
+                                    const precioProducto = selectedOption.dataset.precio;
+                                    const nombreProducto = selectedOption.textContent;
+
+                                    // Si el producto ya está en la lista, aumentar la cantidad
+                                    if (productosSeleccionados[idProducto]) {
+                                        productosSeleccionados[idProducto].cantidad++;
+                                    } else {
+                                        // Si no está, agregarlo a la lista
+                                        productosSeleccionados[idProducto] = {
+                                            nombre: nombreProducto,
+                                            precio: precioProducto,
+                                            cantidad: 1
+                                        };
+                                    }
+
+                                    //Actualizar la lista de productos
+                                    actualizarListaProductos();
+
+                                    // Limpiar la selección
+                                    select.selectedIndex = 0; // Volver a la opción "Seleccione un producto"
+                                }
+                            }
+
+                            // Agregar eventos a los selects
+                            document.getElementById('productosCafe').addEventListener('change', () => manejarCambio('productosCafe'));
+                            document.getElementById('productosPostres').addEventListener('change', () => manejarCambio('productosPostres'));
+                            document.getElementById('productosBocadillos').addEventListener('change', () => manejarCambio('productosBocadillos'));
 
                             // Cargar productos en los selects
                             cargarProductos('cafe', 'productosCafe');
