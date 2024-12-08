@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="assets/bootstrap.min.css">
     <script src="assets/bootstrap.bundle.min.js"></script>
     <title>Brew & Bite</title>
@@ -563,18 +565,12 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <form>
+                                        <form id="formOrdenar">
                                             <div class="row mb-3">
                                                 <div class="col">
                                                     <label for="productosCafe" class="form-label">Café</label>
                                                     <select class="form-select" id="productosCafe" aria-label="Default select example">
                                                         <option disabled selected>Seleccione un producto</option>
-                                                        <opgtion value="1">Expresso</option>
-                                                        <option value="2">Americano</option>
-                                                        <option value="3">Latte</option>
-                                                        <option value="4">Mocca</option>
-                                                        <option value="5">Capucchino</option>
-                                                        <option value="6">Frappe</option>
                                                     </select>
                                                 </div>
 
@@ -582,12 +578,6 @@
                                                     <label for="productosPostres" class="form-label">Postres</label>
                                                     <select class="form-select" id="productosPostres" aria-label="Default select example">
                                                         <option disabled selected>Seleccione un producto</option>
-                                                        <option value="1">Chesse Cake</option>
-                                                        <option value="2">Brownie C</option>
-                                                        <option value="3">Crepas</option>
-                                                        <option value="4">Flan</option>
-                                                        <option value="5">Pastel de chocolate</option>
-                                                        <option value="6">Cupcake</option>
                                                     </select>
                                                 </div>
 
@@ -595,12 +585,6 @@
                                                     <label for="productosBocadillos" class="form-label">Bocadillos</label>
                                                     <select class="form-select" id="productosBocadillos" aria-label="Default select example">
                                                         <option disabled selected>Seleccione un producto</option>
-                                                        <option value="1">Hotdog</option>
-                                                        <option value="2">Baguette Salmon</option>
-                                                        <option value="3">Baguette Res</option>
-                                                        <option value="4">Pan relleno</option>
-                                                        <option value="5">Galletas</option>
-                                                        <option value="6">Pan de muerto</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -617,11 +601,89 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary btnOrdenar" data-bs-target="#modalOrdenar2" data-bs-toggle="modal">Continuar</button>
+                                        <button type="button" class="btn btn-primary btnOrdenar" data-bs-target="#modalOrdenar2" data-bs-toggle="modal" onclick="prepararOrden()">Continuar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            const productosSeleccionados = {};
+
+                            // Función para cargar productos en el select
+                            function cargarProductos(tipo, selectId) {
+                                fetch(`get_products.php?tipo=${tipo}`)
+                                    .then(response => response.json())
+                                    .then(productos => {
+                                        const select = document.getElementById(selectId);
+                                        productos.forEach(producto => {
+                                            const option = document.createElement('option');
+                                            option.value = producto.id_producto;
+                                            option.textContent = producto.nombre;
+                                            option.dataset.precio = producto.precio;
+                                            select.appendChild(option);
+                                        });
+                                    })
+                                    .catch(error => console.error('Error al cargar los productos:', error));
+                            }
+
+                            // Función para actualizar la lista de productos
+                            function actualizarListaProductos() {
+                                const lista = document.getElementById('listaProductos');
+                                lista.value = Object.entries(productosSeleccionados)
+                                    .map(([id, { nombre, precio, cantidad }]) => `${nombre} - Precio: $${precio} - Cantidad: ${cantidad}`)
+                                    .join('\n');
+                            }
+
+                            //Funcion para manejar el cambio en selects
+                            function manejarCambio(selectId){
+                                const select = document.getElementById(selectId);
+                                const selectedOption = select.options[select.selectedIndex];
+
+                                if (selectedOption.value) {
+                                    const idProducto = selectedOption.value;
+                                    const precioProducto = selectedOption.dataset.precio;
+                                    const nombreProducto = selectedOption.textContent;
+
+                                    // Si el producto ya está en la lista, aumentar la cantidad
+                                    if (productosSeleccionados[idProducto]) {
+                                        productosSeleccionados[idProducto].cantidad++;
+                                    } else {
+                                        // Si no está, agregarlo a la lista
+                                        productosSeleccionados[idProducto] = {
+                                            nombre: nombreProducto,
+                                            precio: precioProducto,
+                                            cantidad: 1
+                                        };
+                                    }
+
+                                    //Actualizar la lista de productos
+                                    actualizarListaProductos();
+
+                                    // Limpiar la selección
+                                    select.selectedIndex = 0; // Volver a la opción "Seleccione un producto"
+                                }
+                            }
+
+                            // Función para preparar la orden al abrir el segundo modal
+                            function prepararOrden() {
+                                const listaProductosModal = document.getElementById('listaProductosModal');
+                                const descAdicionalModal = document.getElementById('descAdicionalModal');
+
+                                // Llenar los campos del segundo modal con los datos del primer modal
+                                listaProductosModal.value = document.getElementById('listaProductos').value;
+                                descAdicionalModal.value = document.getElementById('descAdicional').value;
+                            }
+
+                            // Agregar eventos a los selects
+                            document.getElementById('productosCafe').addEventListener('change', () => manejarCambio('productosCafe'));
+                            document.getElementById('productosPostres').addEventListener('change', () => manejarCambio('productosPostres'));
+                            document.getElementById('productosBocadillos').addEventListener('change', () => manejarCambio('productosBocadillos'));
+
+                            // Cargar productos en los selects
+                            cargarProductos('cafe', 'productosCafe');
+                            cargarProductos('postre', 'productosPostres');
+                            cargarProductos('bocadillo', 'productosBocadillos');
+                        </script>
                         <!-- Modal 2-->
                         <div class="modal fade" id="modalOrdenar2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalOrdenar2Label" aria-hidden="true">
                             <div class="modal-dialog">
@@ -632,7 +694,7 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <form>
+                                        <form id="formOrden">
                                             <div class="mb-3">
                                                 <label for="nombre" class="form-label">Nombre</label>
                                                 <input type="text" class="form-control" id="nombre" placeholder="Juan Perez">
@@ -646,18 +708,94 @@
                                                 <input type="tel" class="form-control" id="telefono" placeholder="123456789">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="listaProductos" class="form-label">Lista de productos</label>
-                                                <textarea class="form-control" id="listaProductos" rows="6" placeholder="Lista de productos:" readonly></textarea>
+                                                <label for="listaProductosModal" class="form-label">Lista de productos</label>
+                                                <textarea class="form-control" id="listaProductosModal" rows="6" placeholder="Lista de productos:" readonly></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="descAdicionalModal" class="form-label">Descripción adicional</label>
+                                                <textarea class="form-control" id="descAdicionalModal" rows="3" placeholder="Descripción adicional" readonly></textarea>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary btnOrdenar" data-bs-target="#modalOrdenar3" data-bs-toggle="modal">Continuar</button>
+                                        <button type="button" class="btn btn-primary btnOrdenar" onclick="insertarOrden()">Continuar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            function insertarOrden() {
+                                const nombre = document.getElementById('nombre').value;
+                                const correo = document.getElementById('correo').value;
+                                const telefono = document.getElementById('telefono').value;
+                                const listaProductos = document.getElementById('listaProductosModal').value;
+                                const descAdicional = document.getElementById('descAdicionalModal').value;
+
+                                // Aquí puedes calcular el total, por ejemplo, sumando los precios de los productos
+                                const total = calcularTotal(); // Implementa esta función según tu lógica
+
+                                // Crear un objeto con los datos
+                                const data = {
+                                    nombre: nombre,
+                                    correo: correo,
+                                    telefono: telefono,
+                                    lista_productos: listaProductos,
+                                    total: total,
+                                    descripcion_adicional: descAdicional
+                                };
+
+                                // Enviar los datos al servidor usando fetch
+                                fetch('insertar_orden.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(data)
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        // Si la inserción fue exitosa, avanzar al modal 3
+                                        $('#modalOrdenar2').modal('hide');
+                                        // Establecer el total en el modal 3
+                                        document.getElementById('totalOrden').value = total; // Mostrar el total en el modal 3
+                                        $('#modalOrdenar3').modal('show');
+                                        // Limpiar los campos del formulario
+                                        document.getElementById('nombre').value = '';
+                                        document.getElementById('correo').value = '';
+                                        document.getElementById('telefono').value = '';
+                                        document.getElementById('listaProductos').value = '';
+                                        document.getElementById('descAdicional').value = '';
+                                        document.getElementById('listaProductosModal').value = '';
+                                        document.getElementById('descAdicionalModal').value = '';
+                                        // Guardar el id_orden para usarlo en la confirmación de pago
+                                        const id_orden = data.id_orden;
+                                        document.getElementById('orden').value = id_orden;
+                                    } else {
+                                        alert('Error al insertar la orden: ' + data.message);
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    alert('Error al insertar la orden');
+                                });
+                            }
+
+                            // Función para calcular el total (implementa tu lógica aquí)
+                            function calcularTotal() {
+                                let total = 0;
+
+                                // Iterar sobre los productos seleccionados
+                                for (const id in productosSeleccionados) {
+                                    const producto = productosSeleccionados[id];
+                                    // Calcular el total sumando el precio por la cantidad
+                                    total += producto.precio * producto.cantidad;
+                                }
+
+                                return total; // Retorna el total calculado
+                            }
+                        </script>
                         <!-- Modal 3-->
                         <div class="modal fade" id="modalOrdenar3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalOrdenar3Label" aria-hidden="true">
                             <div class="modal-dialog">
@@ -668,10 +806,10 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <form>
+                                        <form id="formPago">
                                             <div class="mb-3">
                                                 <label class="form-label" for="text">Confirmación de pago:</label>
-                                                <input class="form-control" type="text" name="total" id="total" value="$300.00" readonly>
+                                                <input class="form-control" type="text" name="totalOrden" id="totalOrden" placeholder="$300.00" readonly>
                                             </div>
 
                                             <div class="mb-3">
@@ -698,11 +836,60 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary btnOrdenar">Pagar ahora</button>
+                                        <button type="button" class="btn btn-primary btnOrdenar" onclick="confirmarPago()">Pagar ahora</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            function confirmarPago() {
+                                const totalOrden = document.getElementById('totalOrden').value;
+                                const orden = document.getElementById('orden').value;
+                                const numTarjeta = document.getElementById('numTarjeta').value;
+                                const cvv = document.getElementById('cvv').value;
+                                const fecha = document.getElementById('fecha').value;
+
+                                // Crear un objeto con los datos
+                                const data = {
+                                    total_orden: totalOrden,
+                                    orden: orden,
+                                    num_tarjeta: numTarjeta,
+                                    cvv: cvv,
+                                    fecha_expiracion: fecha
+                                };
+
+                                // Enviar los datos al servidor usando fetch
+                                fetch('confirmar_pago.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(data)
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        // Si la confirmación fue exitosa, mostrar un mensaje de éxito
+                                        alert('Pago confirmado con éxito!');
+                                        // Limpiar los campos del formulario
+                                        document.getElementById('numTarjeta').value = '';
+                                        document.getElementById('cvv').value = '';
+                                        document.getElementById('fecha').value = '';
+                                        document.getElementById('totalOrden').value = '';
+                                        document.getElementById('orden').value = '';
+                                        // Cerrar el modal
+                                        $('#modalOrdenar3').modal('hide');
+
+                                    } else {
+                                        alert('Error al confirmar el pago: ' + data.message);
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    alert('Error al confirmar el pago');
+                                });
+                            }
+                        </script>
 
                         <!-- Modal Agregar al carrito-->
                         <div class="modal fade" id="modalAgregar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAgregarLabel" aria-hidden="true">
@@ -822,79 +1009,19 @@
         <div class="row">
             <div class="col">
                 <!--boton menu-->
-                <button type="button" class="btn btn-lg btn-block btnMenu titulos">Café</button>
+                <button type="button" class="btn btn-lg btn-block btnMenu titulos" id="btnCafe">Café</button>
             </div>
             <div class="col">
                 <!-- boton menu-->
-                <button type="button" class="btn  btn-lg btn-block btnMenu titulos">Postres</button>
+                <button type="button" class="btn  btn-lg btn-block btnMenu titulos" id="btnPostres">Postres</button>
             </div>
             <div class="col">
                 <!-- boton menu-->
-                <button type="button" class="btn btn-lg btn-block btnMenu titulos">Bocadillos</button>
+                <button type="button" class="btn btn-lg btn-block btnMenu titulos" id="btnBocadillos">Bocadillos</button>
             </div>
 
-            <div class="row row-cols-md-3 g-4 col_menu">
-                <!-- Primera fila de 3 cards -->
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/Expresso.png" class="card-img-top rounded-circle" alt="Expresso" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Expresso</h5>
-                            <p class="card-text">Precio: $45.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/Americano.png" class="card-img-top rounded-circle" alt="Americano" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Americano</h5>
-                            <p class="card-text">Precio: $35.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/Capuchino.png" class="card-img-top rounded-circle" alt="Capuchino" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Capuchino</h5>
-                            <p class="card-text">Precio: $45.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/frappe.png" class="card-img-top rounded-circle" alt="Frappé" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Frappé</h5>
-                            <p class="card-text">Precio: $50.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/latte.png" class="card-img-top rounded-circle" alt="Latte" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Latte</h5>
-                            <p class="card-text">Precio: $70.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card cardmenu h-100">
-                        <img src="assets/img/mocca.png" class="card-img-top rounded-circle" alt="Mocca" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
-                        <div class="card-body">
-                            <h5 class="card-title">Mocca</h5>
-                            <p class="card-text">Precio: $45.00</p>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="row row-cols-md-3 g-4 col_menu" id="contenedor-menu">
+                <!-- CARGAR LAS CARDS DEL MENÚ EN EL CONTENEDOR -->
             </div>
         </div>
     </div>
@@ -980,6 +1107,46 @@
             <p>&copy; 2024. Brew & Bite Company. Todos los derechos reservados</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('btnCafe').addEventListener('click', () => cargarProductos('CAFE'));
+        document.getElementById('btnPostres').addEventListener('click', () => cargarProductos('POSTRE'));
+        document.getElementById('btnBocadillos').addEventListener('click', () => cargarProductos('BOCADILLO'));
+
+        // Función para cargar los productos según el tipo seleccionado
+        function cargarProductos(tipo) {
+            const contenedor = document.getElementById('contenedor-menu');
+            contenedor.innerHTML = ''; // Limpiar el contenedor antes de cargar nuevos productos
+
+            fetch(`get_products.php?tipo=${tipo}`)
+                .then(response => response.json())
+                .then(productos => {
+                    productos.forEach(producto => {
+                        // Crear un div con la clase 'col'
+                        const colDiv = document.createElement('div');
+                        colDiv.className = 'col';
+
+                        // Crear la tarjeta
+                        const card = document.createElement('div');
+                        card.className = 'card cardmenu h-100';
+                        card.innerHTML = `
+                            <img src="${producto.foto}" class="card-img-top rounded-circle" alt="${producto.nombre}" style="width: 40%; height: 10rem; margin: 0 auto; object-fit: contain;">
+                            <div class="card-body">
+                                <h5 class="card-title">${producto.nombre}</h5>
+                                <p class="card-text">Precio: $${producto.precio}</p>
+                            </div>
+                        `;
+
+                        // Agregar la tarjeta al div 'col'
+                        colDiv.appendChild(card);
+
+                        // Agregar el div 'col' al contenedor principal
+                        contenedor.appendChild(colDiv);
+                    });
+                })
+                .catch(error => console.error('Error al cargar los productos:', error));
+        }
+    </script>
 
 </body>
 </html>
