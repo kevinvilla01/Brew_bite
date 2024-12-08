@@ -454,14 +454,19 @@
 
     .footer-bottom {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         margin-top: 20px;
         font-size: 0.9rem;
+        gap: 20px;
     }
 
     .footer-bottom p {
-        margin: 0 auto;
+        margin: 0;
+    }
+    .footer-bottom a{
+        text-decoration: none;
+        color: inherit;
     }
 
     /* Responsivo */
@@ -1103,7 +1108,7 @@
         </div>
 
         <div class="footer-bottom">
-            <a href="terminos.html"><p>terminos y condicones</p></a>
+            <a href="terminos.html"><p>Términos y Condicones</p></a>
             <p>&copy; 2024. Brew & Bite Company. Todos los derechos reservados</p>
         </div>
     </footer>
