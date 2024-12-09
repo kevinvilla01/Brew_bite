@@ -517,7 +517,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="dynamicNavbar">
         <div class="container">
-            <a class="navbar-brand" href="#seccion1">
+            <a class="navbar-brand" href="#principal">
                 <img src="assets/img/LOGO_AI_VECTORIZADO.png" alt="Brew_Bite" width="200" height="130" style="margin-left: -70px;" id="seccion1">
             </a>
 
@@ -530,7 +530,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav justify-content-end ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#seccion1">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="#principal">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#nosotros">Nosotros</a>
@@ -571,7 +571,7 @@ window.addEventListener('scroll', () => {
 });</script>
 
     <!-- Contenedor principal -->
-    <div class="container text-center py-4 principal">
+    <div class="container text-center py-4 principal" id="principal">
         <div class="container">
             <div class="row cresponsive">
                 <div class="col textp me-5">
