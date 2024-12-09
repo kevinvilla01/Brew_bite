@@ -22,6 +22,10 @@
         .nav{
             text-align: center;
         }
+        .navbar{
+            transition: transform 0.3s ease-in-out;
+            z-index: 9999;
+        }
         .nav-link{
             color: #f5f5dc;
             text-decoration: none;
@@ -511,7 +515,7 @@
     <!-- Fin de estilos de la página -->
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="dynamicNavbar">
         <div class="container">
             <a class="navbar-brand" href="#seccion1">
                 <img src="assets/img/LOGO_AI_VECTORIZADO.png" alt="Brew_Bite" width="200" height="130" style="margin-left: -70px;" id="seccion1">
@@ -547,6 +551,24 @@
             </div>
         </div>
     </nav>
+    <script>// Selecciona la navbar
+const navbar = document.getElementById('dynamicNavbar');
+
+// Variable para rastrear la posición del scroll
+let lastScrollY = window.scrollY;
+
+window.addEventListener('scroll', () => {
+    // Obtén la posición actual del scroll
+    const currentScrollY = window.scrollY;
+
+    // Si el usuario está desplazándose hacia arriba
+    if (currentScrollY < lastScrollY) {
+        navbar.style.top = `${currentScrollY}px`; // Ajusta la posición de la navbar
+    }
+
+    // Actualiza la posición previa del scroll
+    lastScrollY = currentScrollY;
+});</script>
 
     <!-- Contenedor principal -->
     <div class="container text-center py-4 principal">
