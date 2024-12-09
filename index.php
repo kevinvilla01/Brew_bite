@@ -541,7 +541,7 @@
                         <a class="nav-link" href="#redes">Redes</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link"><img src="assets/img/wired-outline-146-trolley-hover-jump.png" style="height: 2rem;"></a>
+                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalOrdenar"><img src="assets/img/wired-outline-146-trolley-hover-jump.png" style="height: 2rem;"></a>
                     </li>
                 </ul>
             </div>
