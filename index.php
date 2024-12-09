@@ -24,7 +24,7 @@
         }
         .navbar{
             transition: transform 0.3s ease-in-out;
-            z-index: 9999;
+            z-index: 999;
         }
         .nav-link{
             color: #f5f5dc;
@@ -152,6 +152,9 @@
         .card-img-top{
             height: 200px;
             object-fit: cover;
+        }
+        #modalOrdenar{
+            z-index: 99999;
         }
 
         /*Cartas*/
